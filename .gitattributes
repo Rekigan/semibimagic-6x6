@@ -1,0 +1,3 @@
+# Store every file byte for byte: the SHA-256 manifest of logs/ and data/
+# must stay valid after a clone on any platform (no line-ending conversion).
+* -text

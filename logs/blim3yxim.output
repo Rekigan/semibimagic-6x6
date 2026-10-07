@@ -1,0 +1,3 @@
+M=36: 1 sets, 1 with enough sextets, none works  (1.7s)
+M=37: 36 sets, 3 with enough sextets, none works  (3.1s)
+M=38: 666 sets, 39 with enough sextets, none works  (393.4s)

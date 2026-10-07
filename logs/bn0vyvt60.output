@@ -1,0 +1,8 @@
+M=37: 2324784 sextets in 75966 (S1,S2) buckets  [2.4s]
+  feasible windows: 6*S1 in [667,701], 6*S2 in [16279,17571]
+  buckets with >=6 sextets: 532
+  M=37: NO semi-bimagic square  [17.5s]
+M=38: 2760681 sextets in 83379 (S1,S2) buckets  [3.5s]
+  feasible windows: 6*S1 in [668,736], 6*S2 in [16354,19006]
+  buckets with >=6 sextets: 2048
+  M=38: NO semi-bimagic square  [187.6s]

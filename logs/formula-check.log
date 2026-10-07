@@ -1,0 +1,10 @@
+ r  S1 dir  133-r  S2 dir  formula  ok
+ 0     126    133    3521     3815 n/a (classe di 42)
+ 1     132    132    3779     3779 True   divisibile per 6: True
+ 2     131    131    3741     3741 True   divisibile per 6: True
+ 3     130    130    3701     3701 True   divisibile per 6: True
+ 4     129    129    3659     3659 True   divisibile per 6: True
+ 5     128    128    3615     3615 True   divisibile per 6: True
+ 6     127    127    3569     3569 True   divisibile per 6: True
+
+r=4 -> 3659 = il vincitore S2-minimo: la formula si auto-convalida.

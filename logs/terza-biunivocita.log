@@ -1,0 +1,20 @@
+Bersaglio 1a — TERZA implementazione della biunivocita
+soluzioni <-> gemelle (riscritta da specifica, non copiata).
+
+FACCE PRE-SCRITTE (stampate prima dei calcoli):
+  attesi 1008 soluzioni omogenee = 1008 gemelle 3-allineate,
+  9072 affini = 9072 gemelle 2-allineate, zero mismatch di multiset,
+  zero collisioni (iniettivita di phi_hom e phi_aff per
+  accoppiamento); coppie non vuote per vista 6+7+1 = 14.
+  OGNI scarto dagli attesi FERMA la seduta e si verbalizza.
+
+Base: le 3 viste di seduta_g.py (3799 E=38/Q=0; pfeffermann E=2/Q=70;
+w648 E=2/Q=1), 15 coppie x 720 accoppiamenti ciascuna, enumerazione
+COMPLETA (niente any). Log: logs/terza-biunivocita.log
+
+  3799 E=38 Q=0: coppie non vuote 6
+  pfeffermann E=2 Q=70: coppie non vuote 7
+  w648 E=2 Q=1: coppie non vuote 1
+
+VERDETTO 1a [base: 3 viste x 15 coppie x 720]: hom 1008 g3 1008 aff 9072 g2 9072 mismatch 0 collisioni 0 nonvuote [6, 7, 1]
+  ATTESI CENTRATI — terza implementazione concorde

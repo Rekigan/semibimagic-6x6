@@ -1,0 +1,26 @@
+Bersaglio 2b — machine-check della casistica (a, b) del caso
+residuo di UNICITA (derivazione 2a nel verbale RESIDUO-SEDUTA.md).
+
+FACCE PRE-SCRITTE (dalla teoria, stampate prima dei calcoli):
+  F1: nessuna gemella HALF-SUM (2*somma = s1 e 2*somma-quadrati = s2)
+      sulle 267 coppie reali non vuote (residuo I mai abitato qui).
+  F2: secondi-gemelli CONGIUNTI (indipendenti da g e comp g): ZERO
+      (= UNICITA, ri-check per appartenenza alla casistica).
+  F3 (predizione dalla derivazione): la classe (3,2)~(0,1) — chiusa
+      dalla SOLA SOMMA — e' vuota GIA al livello lineare; le classi
+      chiuse dalla lama ((3,1)~(0,2) e (2,2)~(1,1)) e la residua
+      (2,1)~(1,2) POSSONO ospitare candidati lineari, tutti morti
+      alla quadratica.
+
+Base: le 267 coppie non vuote del vaglio 1b (membri = blocchi delle
+partizioni ortogonali dei 15 mondi); per ciascuna: tutti i
+secondi-gemelli LINEARI (somme uguali, diversi da g e comp g),
+classificati per (a, b) normalizzata col swap del complemento
+(a,b) ~ (3-a, 3-b). Log: logs/residuo-ab.log
+
+
+VERDETTI [base: 267 coppie non vuote dei 15 mondi]:
+  F1 half-sum: 0 (attesi 0)
+  F2 secondi-gemelli congiunti: 0 (attesi 0)
+  F3 classi (a,b) dei candidati LINEARI [normalizzate col swap]: {(0, 2): 36, (0, 3): 194, (1, 1): 1372, (1, 2): 882, (1, 3): 28}
+     predizione: classe (0,1)~(3,2) = 0 (chiusa dalla sola somma); esito: 0 CENTRATA

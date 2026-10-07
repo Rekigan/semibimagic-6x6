@@ -1,0 +1,31 @@
+
+Pfeffermann 1894 (max 49)
+  distinct: True  min=1 max=49
+  S1=150  S2=5150
+  correct sums: 26 / 28   bad: ['diag^2', 'anti^2']
+
+Boyer 2005 (max 55)
+  distinct: True  min=1 max=55
+  S1=168  S2=6524
+  correct sums: 27 / 28   bad: ['diag^2']
+
+Wroblewski 2006 (max 135)
+  distinct: True  min=1 max=135
+  S1=408  S2=36826
+  correct sums: 28 / 28   bad: none
+
+Morgenstern 2006 (max 72) - claimed optimal
+  distinct: True  min=1 max=72
+  S1=219  S2=10663
+  correct sums: 28 / 28   bad: none
+
+sweep result, max = 42
+  distinct: True  min=1 max=42
+  S1=129  S2=3799
+  correct sums: 24 / 28   bad: ['diag', 'anti', 'diag^2', 'anti^2']
+
+  36 distinct integers in 1..42, omitting [19, 20, 21, 22, 23, 24]
+  omitted six sum to 129  (= S1)
+  total sum   774 = 6*129
+  total sqsum 22794 = 6*3799
+  distinct: True, min 1, max 42

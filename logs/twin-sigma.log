@@ -1,0 +1,69 @@
+﻿
+=== VINCE 3799 {19..24}: 59 partizioni, sigma-fisse 5 [1, 11, 13, 30, 32]
+  ortogonale (  0, 38)  sigma: orbita con (14,51)
+  ortogonale (  0, 43)  sigma: orbita con (14,28)
+  ortogonale ( 13, 32)  sigma: ENTRAMBE FISSE
+  ortogonale ( 14, 28)  sigma: orbita con (0,43)
+  ortogonale ( 14, 51)  sigma: orbita con (0,38)
+  quasi n1=32 (  3m, 43m)  celle-2: [[25, 42], [30, 37]]
+  quasi n1=32 (  4m, 38m)  celle-2: [[12, 25], [7, 30]]
+  quasi n1=32 (  5m, 43m)  celle-2: [[18, 31], [13, 36]]
+  quasi n1=32 (  8m, 38m)  celle-2: [[36, 37], [31, 42]]
+  quasi n1=32 ( 15m, 51m)  celle-2: [[18, 31], [13, 36]]
+  quasi n1=32 ( 16m, 28m)  celle-2: [[31, 42], [36, 37]]
+  quasi n1=32 ( 17m, 51m)  celle-2: [[30, 37], [25, 42]]
+  quasi n1=32 ( 19m, 28m)  celle-2: [[12, 25], [7, 30]]
+  quasi n1=32 ( 23m, 38m)  celle-2: [[1, 18], [6, 13]]
+  quasi n1=32 ( 28m, 33m)  celle-2: [[1, 18], [6, 13]]
+  quasi n1=32 ( 39m, 51m)  celle-2: [[1, 12], [6, 7]]
+  quasi n1=32 ( 43m, 47m)  celle-2: [[1, 12], [6, 7]]
+
+=== VINCE 3659 mod7: 132 partizioni, sigma-fisse 10 [18, 20, 40, 43, 44, 66, 69, 74, 115, 131]
+  ortogonale ( 10, 61)  sigma: orbita con (45,28)
+  ortogonale ( 10, 92)  sigma: orbita con (45,109)
+  ortogonale ( 28, 45)  sigma: orbita con (61,10)
+  ortogonale ( 43, 44)  sigma: ENTRAMBE FISSE
+  ortogonale ( 45,109)  sigma: orbita con (10,92)
+  quasi n1=32 ( 11m, 61m)  celle-2: [[6, 42], [7, 41]]
+  quasi n1=32 ( 12m, 92m)  celle-2: [[5, 42], [7, 40]]
+  quasi n1=32 ( 13m, 92m)  celle-2: [[3, 41], [6, 38]]
+  quasi n1=32 ( 15m, 61m)  celle-2: [[2, 40], [5, 37]]
+  quasi n1=32 ( 24m, 92m)  celle-2: [[1, 37], [2, 36]]
+  quasi n1=32 ( 28m, 47m)  celle-2: [[5, 42], [7, 40]]
+  quasi n1=32 ( 28m, 49m)  celle-2: [[3, 41], [6, 38]]
+  quasi n1=32 ( 28m, 87m)  celle-2: [[1, 37], [2, 36]]
+  quasi n1=32 ( 46m,109m)  celle-2: [[6, 42], [7, 41]]
+  quasi n1=32 ( 51m,109m)  celle-2: [[2, 40], [5, 37]]
+  quasi n1=32 ( 57m,109m)  celle-2: [[1, 38], [3, 36]]
+  quasi n1=32 ( 61m,103m)  celle-2: [[1, 38], [3, 36]]
+
+=== VINCE 3671 coppie: 50 partizioni, sigma-fisse 4 [6, 11, 17, 25]
+  ortogonale (  4, 38)  sigma: orbita con (12,31)
+  ortogonale ( 12, 31)  sigma: orbita con (4,38)
+
+=== VINCE 3691 a=10: 83 partizioni, sigma-fisse 5 [0, 2, 26, 59, 69]
+  ortogonale (  1, 38)  sigma: orbita con (27,12)
+  ortogonale ( 12, 27)  sigma: orbita con (38,1)
+
+=== QUASI a=7: 76 partizioni, sigma-fisse 18 [8, 9, 10, 11, 12, 20, 24, 27, 30, 49, 50, 51, 52, 57, 58, 59, 67, 75]
+  quasi n1=32 (  5m, 50F)  celle-2: [[1, 26], [11, 28]]
+  quasi n1=32 (  6m, 50F)  celle-2: [[1, 26], [11, 28]]
+  quasi n1=32 ( 43m, 50F)  celle-2: [[15, 32], [17, 42]]
+  quasi n1=32 ( 44m, 50F)  celle-2: [[15, 32], [17, 42]]
+
+=== QUASI {2,4,19,24,39,41}: 61 partizioni, sigma-fisse 23 [1, 4, 8, 10, 13, 15, 16, 18, 20, 21, 23, 24, 26, 27, 29, 32, 35, 40, 43, 49, 50, 59, 60]
+  quasi n1=30 (  2m, 26F)  celle-2: [[11, 28], [16, 35], [15, 32]]
+  quasi n1=30 (  5m, 26F)  celle-2: [[11, 28], [16, 35], [15, 32]]
+  quasi n1=30 ( 17m, 26F)  celle-2: [[11, 28], [8, 27], [15, 32]]
+  quasi n1=32 ( 18F, 26F)  celle-2: [[11, 28], [15, 32]]
+  quasi n1=30 ( 19m, 26F)  celle-2: [[11, 28], [8, 27], [15, 32]]
+  quasi n1=32 ( 20F, 26F)  celle-2: [[11, 28], [15, 32]]
+
+--- quadrato con simmetria di complemento (da coppia sigma-fissa) ---
+     1 28 35 32 27  6
+    34  2 30 25  5 33
+    26 31  3  4 36 29
+    39 12 14 17  7 40
+    11 15 37 42 16  8
+    18 41 10  9 38 13
+    43-M ha per righe le colonne di M: False   (tipo: fisse)

@@ -1,0 +1,14 @@
+symmetric triples with omitted sqsum 3631 : 8
+  of which containing the pair (1,42)     : 1
+  admissible (without 1,42)               : 7
+  ours [4, 11, 18, 25, 32, 39] among them                  : True
+
+symmetric triples passing necessary conditions: 546   (expected 546)
+
+omit [2, 3, 4, 39, 40, 41]: centred = True, would give S2 = 3459
+  (it is centred: 2+41=3+40=4+39=43)
+  S2 = 3459 < 3659, arithmetic allows it, enumeration excludes it:
+  the reduction to four sets is empirical content.
+
+S2 values arithmetic allows: 142, min 3459, max 3799
+realised by actual squares  : [3659, 3671, 3691, 3799]  (4 of 546)

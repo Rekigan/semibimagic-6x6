@@ -1,0 +1,72 @@
+SEDUTA G — il grafo delle gemelle: equivalenza, censimento,
+(N3, N2) esaustivo.
+
+PREREGISTRAZIONE (stampata prima di ogni calcolo):
+ FACCIA: EXCL falsificata se esiste UN accoppiamento con N3 > 0 E
+ N2 > 0; confermata-estesa se N3*N2 = 0 su TUTTI. Lo sweep e'
+ ESAUSTIVO: 720 accoppiamenti = tutte le biiezioni per coppia.
+ RIGIDITA attesa (lama T1): due gemelle della stessa classe di
+ invarianti (somma, somma quadrati) condividono al piu' 1 elemento
+ per lato (2 condivisi + invarianti uguali forzano il terzo uguale).
+
+Basi: 3 viste campione (tipo A, tipo B, orfano) x 15 coppie di
+colonne = 45 coppie-oggetto; per ciascuna: G pairing-indipendente
+(terne di A x terne di B a invarianti uguali), poi sweep 720.
+Passo 1: equivalenza gemelle <-> hom_aff su ogni accoppiamento.
+Log: logs/seduta-g.log
+
+
+=== 3799 E=38 Q=0 (A)
+  coppia (0,1): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,2): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,3): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (0,4): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,5): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, True): 324, (False, False): 360, (True, False): 36}
+  coppia (1,2): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (1,3): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (1,4): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, True): 324, (False, False): 360, (True, False): 36}
+  coppia (1,5): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (2,3): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, True): 324, (False, False): 360, (True, False): 36}
+  coppia (2,4): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (2,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (3,4): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (3,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (4,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+
+=== pfeffermann E=2 Q=70 (B, hub in riga)
+  coppia (0,1): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,2): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,3): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,4): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,5): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (1,2): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(True, False): 36, (False, True): 324, (False, False): 360}
+  coppia (1,3): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (1,4): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (1,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (2,3): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (2,4): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, False): 360, (False, True): 324, (True, False): 36}
+  coppia (2,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (3,4): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(True, False): 36, (False, True): 324, (False, False): 360}
+  coppia (3,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (4,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+
+=== wroblewski-648 E=2 Q=1 (orfano)
+  coppia (0,1): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,2): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,3): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,4): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (0,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (1,2): |G|=2 classi-int {(0, 0): 1} rigidita-viol 0 | sweep 720: {(False, True): 324, (False, False): 360, (True, False): 36}
+  coppia (1,3): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (1,4): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (1,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (2,3): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (2,4): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (2,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (3,4): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (3,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+  coppia (4,5): |G|=0 classi-int {} rigidita-viol 0 | sweep 720: {(False, False): 720}
+
+VERDETTI [basi: 45 coppie-oggetto, 32400 accoppiamenti esaustivi, equivalenza testata su ognuno]:
+  passo 1 equivalenza gemelle<->hom_aff: mismatch 0 (PERFETTA)
+  passo 3 EXCL: N3*N2 = 0 su TUTTI gli accoppiamenti — confermata-estesa, base esaustiva per coppia

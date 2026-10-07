@@ -1,0 +1,39 @@
+
+Pfeffermann 1894 (max 49)
+  distinct: True  min=1 max=49
+  S1=150  S2=5150
+  correct sums: 26 / 28   bad: ['diag^2', 'anti^2']
+
+Boyer 2005 (max 55)
+  distinct: True  min=1 max=55
+  S1=168  S2=6524
+  correct sums: 27 / 28   bad: ['diag^2']
+
+Wroblewski 2006 (max 135)
+  distinct: True  min=1 max=135
+  S1=408  S2=36826
+  correct sums: 28 / 28   bad: none
+
+Morgenstern 2006 (max 72) - claimed optimal
+  distinct: True  min=1 max=72
+  S1=219  S2=10663
+  correct sums: 28 / 28   bad: none
+  S1=129 S2=3659  bimagic sextets: 124
+  FOUND after 11 row-partitions
+  1  12  20  27  33  36
+ 28  31  37   2  10  21
+ 38  23  35  14  16   3
+ 13  15   5  40  22  34
+ 19   6   8  29  41  26
+ 30  42  24  17   7   9
+  row sums   : [129, 129, 129, 129, 129, 129]
+  row sqsums : [3659, 3659, 3659, 3659, 3659, 3659]
+  col sums   : [129, 129, 129, 129, 129, 129]
+  col sqsums : [3659, 3659, 3659, 3659, 3659, 3659]
+  diagonals  : 157 101 | squares: 5549 2553
+
+
+OPTIMAL SQUARE, S2-minimal set (42, 129, 3659)
+  distinct: True  min=1 max=42
+  S1=129  S2=3659
+  correct sums: 24 / 28   bad: ['diag', 'anti', 'diag^2', 'anti^2']

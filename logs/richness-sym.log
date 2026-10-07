@@ -1,0 +1,12 @@
+candidati SPECULARI con >=1 partizione: 382  (su 382 attesi dal middle-number)
+top 8 per partizioni (tra gli speculari):
+  #1  partizioni=132  s2=3659  omette=[4, 11, 18, 25, 32, 39]  <-- VINCITORE
+  #2  partizioni=115  s2=3571  omette=[2, 6, 13, 30, 37, 41]
+  #3  partizioni=108  s2=3679  omette=[4, 14, 19, 24, 29, 39]
+  #4  partizioni=101  s2=3595  omette=[2, 6, 21, 22, 37, 41]
+  #5  partizioni= 94  s2=3595  omette=[4, 8, 10, 33, 35, 39]
+  #6  partizioni= 90  s2=3595  omette=[3, 5, 19, 24, 38, 40]
+  #7  partizioni= 83  s2=3631  omette=[2, 12, 15, 28, 31, 41]
+  #8  partizioni= 83  s2=3691  omette=[10, 11, 12, 31, 32, 33]  <-- VINCITORE
+
+ranghi dei 4 vincitori tra gli speculari: [1, 8, 18, 24]

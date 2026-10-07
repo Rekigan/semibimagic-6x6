@@ -1,0 +1,24 @@
+M=40: 3838380 sextets in 99598 (S1,S2) buckets  [5.2s]
+  feasible windows: 6*S1 in [670,806], 6*S2 in [16510,22086]
+  buckets with >=6 sextets: 6839
+  M=40: NO semi-bimagic square  [1068.2s]
+M=41: 4496388 sextets in 108496 (S1,S2) buckets  [5.7s]
+  feasible windows: 6*S1 in [671,841], 6*S2 in [16591,23731]
+  buckets with >=6 sextets: 9774
+  M=41: NO semi-bimagic square  [4119.5s]
+M=42: 5245786 sextets in 117798 (S1,S2) buckets  [8.6s]
+  feasible windows: 6*S1 in [672,876], 6*S2 in [16674,25446]
+  buckets with >=6 sextets: 12858
+
+*** FOUND: max=42, S1=129, S2=3799 [3012.7s] ***
+  1   6  26  29  33  34
+ 27  28  31  36   2   5
+ 32  35   3   4  25  30
+ 40  39  17  14  12   7
+ 11   8  42  37  16  15
+ 18  13  10   9  41  38
+  row sums   : [129, 129, 129, 129, 129, 129]
+  row sqsums : [3799, 3799, 3799, 3799, 3799, 3799]
+  col sums   : [129, 129, 129, 129, 129, 129]
+  col sqsums : [3799, 3799, 3799, 3799, 3799, 3799]
+  diagonals  : 100 83 | squares: 2690 1853

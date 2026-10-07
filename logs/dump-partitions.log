@@ -1,0 +1,10 @@
+          3799: sextets 106  partitions  59  extendable 8  [3.1s]
+          3659: sextets 124  partitions 132  extendable 8  [6.0s]
+          3671: sextets 112  partitions  50  extendable 4  [2.0s]
+          3691: sextets 110  partitions  83  extendable 4  [2.8s]
+ 3459-negative: sextets  84  partitions   6  extendable 0  [0.6s]
+
+four optimal sets: 324 row partitions total, 24 extendable
+expected         : 324 total (132+50+83+59), 24 extendable, and 6/0 for the negative
+
+dumped to data/partitions-max42.json

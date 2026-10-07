@@ -1,0 +1,18 @@
+arithmetic candidates: 546
+  50/546  [109s]  {'no_sextet_cover': 0, 'no_partition': 13, 'partition_no_square': 37, 'square': 0}
+  100/546  [215s]  {'no_sextet_cover': 0, 'no_partition': 23, 'partition_no_square': 77, 'square': 0}
+  150/546  [274s]  {'no_sextet_cover': 0, 'no_partition': 35, 'partition_no_square': 115, 'square': 0}
+  200/546  [343s]  {'no_sextet_cover': 0, 'no_partition': 46, 'partition_no_square': 153, 'square': 1}
+  250/546  [434s]  {'no_sextet_cover': 0, 'no_partition': 62, 'partition_no_square': 187, 'square': 1}
+  300/546  [502s]  {'no_sextet_cover': 0, 'no_partition': 81, 'partition_no_square': 218, 'square': 1}
+  350/546  [564s]  {'no_sextet_cover': 0, 'no_partition': 95, 'partition_no_square': 253, 'square': 2}
+  400/546  [594s]  {'no_sextet_cover': 0, 'no_partition': 112, 'partition_no_square': 286, 'square': 2}
+  450/546  [629s]  {'no_sextet_cover': 0, 'no_partition': 128, 'partition_no_square': 319, 'square': 3}
+  500/546  [660s]  {'no_sextet_cover': 0, 'no_partition': 148, 'partition_no_square': 349, 'square': 3}
+
+FINAL  [689s]
+  546 arithmetic candidates
+  with >=1 row partition : 382
+  with >=1 square        : 4
+  breakdown: {'no_sextet_cover': 0, 'no_partition': 164, 'partition_no_square': 378, 'square': 4}
+dumped middle-number.json

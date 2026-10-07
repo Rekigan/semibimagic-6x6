@@ -1,0 +1,10 @@
+S1=129 buckets: 467  [8s]
+columnizable row-partitions : 24
+distinct number sets        : 4
+distinct S2 values          : [3659, 3671, 3691, 3799]
+  omits [19, 20, 21, 22, 23, 24]  centred=True  (8 partitions)
+  omits [4, 11, 18, 25, 32, 39]  centred=True  (8 partitions)
+  omits [7, 8, 21, 22, 35, 36]  centred=True  (4 partitions)
+  omits [10, 11, 12, 31, 32, 33]  centred=True  (4 partitions)
+
+ALL CENTRED: True   [3675s]

@@ -1,0 +1,32 @@
+﻿replica-full-s1_112-126-42.json: 11084 candidati, S1 in [113,126]
+replica-full-s1_127-129-42.json: 13130 candidati, S1 in [127,129]
+replica-full-s1_130-132-42.json: 8081 candidati, S1 in [130,132]
+replica-full-s1_133-147-42.json: 13690 candidati, S1 in [133,147]
+
+voci JSON totali: 45985  (tutte con partizioni >= 1: True)
+SEMANTICA: i JSON registrano i soli candidati con almeno una partizione in righe;
+i totali esaminati stanno nelle righe TOTALE dei terminali (slot 127-129: 76605
+esaminati -> 13130 nel JSON, coincide). Finestra S1 ammissibile [112,147];
+strati S1 con candidati partizionabili: 113..147, assenti [112, 146] = strati senza partizioni, non buchi di copertura
+assume 1 nell'insieme? NO (piu ampio del necessario)
+
+--- CONDIZIONE 1: i SI ---
+  SI  s1=129 s2=3659 omette=(4, 11, 18, 25, 32, 39) partizioni=132  ATTESO
+  SI  s1=129 s2=3671 omette=(7, 8, 21, 22, 35, 36) partizioni=50  ATTESO
+  SI  s1=129 s2=3691 omette=(10, 11, 12, 31, 32, 33) partizioni=83  ATTESO
+  SI  s1=129 s2=3799 omette=(19, 20, 21, 22, 23, 24) partizioni=59  ATTESO
+  SI totali: 4 (attesi 4)  ->  PASS
+
+--- CONDIZIONE 2: il negativo di controllo ---
+  omette (2, 3, 4, 39, 40, 41): partizioni=6, quadrato=NO  ->  PASS (atteso 6 e NO)
+
+--- CONDIZIONE 3: i quadrati allegati sono semi-bimagici ---
+  (4, 11, 18, 25, 32, 39): righe True, colonne True, insieme True
+  (7, 8, 21, 22, 35, 36): righe True, colonne True, insieme True
+  (10, 11, 12, 31, 32, 33): righe True, colonne True, insieme True
+  (19, 20, 21, 22, 23, 24): righe True, colonne True, insieme True
+
+============================================================
+VERDETTO: CONDIZIONE PRE-SCRITTA SODDISFATTA
+La classificazione a max=42 ha ora due implementazioni indipendenti
+sull'intero campo S1, senza assunzione 1-nell-insieme.

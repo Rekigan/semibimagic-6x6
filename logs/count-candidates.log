@@ -1,0 +1,28 @@
+Recompute the per-slot numbers of EXAMINED candidate sets of the
+independent replication at MaxNb = 42 (Remark 4 of the paper), without
+the 35-hour run.
+
+The replication (replica_s1.py, function classifica) examines, for each
+S1 in a slot, every 6-subset d of {1, ..., 41} (42 always stays in the
+set) whose sum is 903 - 6*S1 and whose sum of squares q makes
+(22631 - q) divisible by 6. This script counts those subsets in two
+ways:
+  (a) with the same enumeration routine (replica_s1.subsets_k) and the
+      same conditions as classifica();
+  (b) independently, by brute force over all C(41, 6) = 4,496,388
+      subsets.
+Expected, written before the run (the TOTALE lines of the four
+replication runs, logs/replica-full-totals.md): 84948, 76605, 76605,
+84948 for the slots 112-126, 127-129, 130-132, 133-147.
+
+Usage:  python code/count_candidates.py  > logs/count-candidates.log
+
+slot S1 112-126: (a) 84948  (b) 84948  expected 84948  OK
+slot S1 127-129: (a) 76605  (b) 76605  expected 76605  OK
+slot S1 130-132: (a) 76605  (b) 76605  expected 76605  OK
+slot S1 133-147: (a) 84948  (b) 84948  expected 84948  OK
+candidates with S1 outside [112, 147]: 0
+total examined: 323106
+mirror identity S1 <-> 259 - S1 on the per-stratum counts: True
+RESULT: AS EXPECTED
+time 20s

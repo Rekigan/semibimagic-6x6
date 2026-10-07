@@ -1,0 +1,810 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{url}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+
+\title{The smallest semi-bimagic square of order six}
+\author{Luca Cipolletta}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A $6\times 6$ array of distinct positive integers is \emph{semi-bimagic}
+if all six rows and all six columns have the same sum $S_1$ and the same
+sum of squares $S_2$ (diagonals unconstrained). The oldest example, due
+to Pfeffermann (1894), uses integers up to $49$. We show by exhaustive
+computer enumeration that the smallest possible largest entry is
+$\mathrm{MaxNb}=42$: semi-bimagic squares with distinct integers in
+$[1,42]$ exist, and none exists with all entries in $[1,41]$. At the
+optimum, $S_1=129$ is forced, and exactly four $36$-element sets of
+integers admit such a square, with $S_2\in\{3659,3671,3691,3799\}$; all
+four sets are closed under $x\mapsto 43-x$, a symmetry that emerges from
+the enumeration rather than being imposed. All exclusions $36$--$41$
+were confirmed by two independent algorithms with different underlying
+assumptions, and the classification at the optimum by two independent
+implementations jointly covering the full admissible window
+$S_1\in[112,147]$. As a corollary, squaring the minimal square cell-wise
+yields a $6\times6$ semi-magic square of $36$ distinct perfect squares
+with constant $3659$.
+
+A second, structural part isolates the local mechanism by which two
+columns of a semi-bimagic square interact: \emph{twin triples},
+three-element subsets of the two column sets with equal sums and equal
+sums of squares (degree-$2$ Prouhet--Tarry--Escott pairs). Twins
+aligned at three shared positions under the row pairing are exactly
+the perturbations of the square confined to two columns; twins aligned
+at two are the skew exchanges. Empirically the two realizations
+exclude each other for every tested pairing of every column-block
+pair arising from the fifteen squares surveyed, across more than
+$420{,}000$ explicit pairings. We prove (Theorem~\ref{thm:G}) that
+the exclusion holds for \emph{every} pairing whenever the pair of
+sextuples admits at most one twin up to complementation --- which
+holds, with no exception, for all $1{,}078$ column-block pairs
+arising from the fifteen squares surveyed. An exhaustive census of
+\emph{free} bimagic pairs over $[1,N]$, $N\le26$, then identifies,
+within the census range, the two residual forms at which the general
+conjectures fail: pairs with four twins occur, in the two incidence
+forms singled out by our case analysis; their alignment statistics
+depend only on the form, as reproduced by an abstract six-point
+model, and one form admits mixed pairings whereas the other has
+none. Neither form occurs among the column blocks of the fifteen
+squares surveyed. The uniqueness condition holds throughout the
+surveyed square environment and is conjectured as an environmental
+property.
+\end{abstract}
+
+\section{Introduction}
+
+A magic square is \emph{bimagic} if it remains magic after squaring each
+entry, and \emph{semi-bimagic} if rows and columns (but not necessarily
+the diagonals) have constant sum and constant sum of squares. The first
+semi-bimagic square of order six with distinct integers was published by
+G.~Pfeffermann in 1894~\cite{pfeffermann}; it uses integers up to $49$,
+with $S_1=150$ and $S_2=5150$, and has remained the reference artifact
+for $132$ years. The systematic record of this field is maintained by
+Christian Boyer~\cite{multimagie}.
+
+For \emph{fully} bimagic squares of order six with distinct integers,
+the minimal known example is due to Lee Morgenstern (2006):
+$(\mathrm{MaxNb},S_1,S_2)=(72,219,10663)$, proved minimal in
+2008--09~\cite{multimagie}. To our knowledge, the corresponding minimality
+question for the \emph{semi}-bimagic case --- how small can the largest
+entry be when the diagonal constraints are dropped --- has not been
+recorded, either as a problem or as a record~\cite{multimagie}.
+
+Our contribution is the answer at order six:
+$\mathrm{MaxNb}=42$, with the full classification of the optimal sets.
+The pair of results (Morgenstern's $(72,219,10663)$ versus our
+$(42,129,3659)$) also quantifies, for the first time at order six, the
+cost of the two diagonal constraints.
+
+The second half of the paper (Section~\ref{sec:twins}) turns from the
+record to the mechanism. The enumeration shows that survival is
+decided almost entirely at the orthogonality stage, and
+Remark~\ref{rem:richness} that no simple counting invariant governs
+it. We isolate the local objects that do carry structure: \emph{twin
+triples}, degree-$2$ Prouhet--Tarry--Escott pairs between two disjoint
+bimagic sextuples, whose two possible realizations under a pairing
+(row-aligned and skew) we prove to correspond bijectively to the
+homogeneous and affine local exchanges of a square
+(Proposition~\ref{prop:real}). On every pair arising from the
+fifteen squares surveyed, the two realizations exclude each other.
+Theorem~\ref{thm:G} proves this exclusion for every pairing whenever
+the pair carries at most one twin up to complementation, and a
+screen of all $1{,}078$ column-block pairs across those squares
+finds no exception to that uniqueness. On free pairs of bimagic
+sextuples the picture is sharper still: an exhaustive census up to
+$[1,26]$ (Section~\ref{sec:free}) shows that four-twin pairs occur,
+in exactly the two configurations left open by the case analysis,
+and that within the census the general exclusion fails on one of
+them and holds on the other --- uniqueness is thus conjectured as a
+property of the \emph{square environment}
+(Conjecture~\ref{conj:world}).
+
+Exhaustive enumeration is the accepted standard of proof in this area:
+the impossibility of a $7\times7$ bimagic square of consecutive integers
+is accepted on the basis of four independent programs, and Morgenstern's
+minimality on months of dedicated computation~\cite{multimagie}. We meet
+that bar by running two algorithms with different assumptions on every
+exclusion (Section~\ref{sec:method}).
+
+\section{Definitions and statements}
+
+\begin{definition}
+A \emph{semi-bimagic square of order $6$} is a $6\times6$ array of
+pairwise distinct positive integers such that all rows and all columns
+have the same sum $S_1$ and the same sum of squares $S_2$. Its
+$\mathrm{MaxNb}$ is its largest entry.
+\end{definition}
+
+\begin{theorem}[Minimality]\label{thm:min}
+Semi-bimagic squares of order $6$ with $\mathrm{MaxNb}=42$ exist, and no
+semi-bimagic square of order $6$ has $\mathrm{MaxNb}\le 41$.
+\end{theorem}
+
+\begin{theorem}[Classification at the optimum]\label{thm:class}
+Every semi-bimagic square of order $6$ with $\mathrm{MaxNb}=42$ has
+$S_1=129$, and its set of $36$ entries is one of exactly four sets,
+namely $[1,42]$ minus one of
+\[
+\{19,\dots,24\},\quad \{4,11,18,25,32,39\},\quad
+\{7,8,21,22,35,36\},\quad \{10,11,12,31,32,33\},
+\]
+with $S_2=3799,\ 3659,\ 3671,\ 3691$ respectively. All four sets are
+closed under $x\mapsto 43-x$.
+\end{theorem}
+
+\begin{remark}[Independent replication]\label{rem:replication}
+Theorem~\ref{thm:class} rests on two independent implementations. The
+second (a different framing, written independently) enumerated all
+candidate sets over the \emph{full} admissible window
+$S_1\in[112,147]$ without assuming $1$ in the set, examining every
+candidate admitting at least one row partition ($45{,}985$ entries in
+the published data). Its success condition was pre-registered before
+the run returned: exactly four sets with a square, all at $S_1=129$,
+exactly the four sets above --- a square found anywhere else would have
+falsified the theorem. The outcome: the four sets above, with row
+partition counts $132, 50, 83, 59$ matching the first implementation,
+and no square elsewhere. A pre-registered negative control behaved as
+required: the centred set omitting $\{2,3,4,39,40,41\}$ (with
+$S_2=3459$, \emph{below} the realized minimum) admits six row
+partitions and no square. As a further internal cross-check, the
+per-slot totals of examined candidates ($84{,}948$; $76{,}605$;
+$76{,}605$; $84{,}948$ over the four slots, $323{,}106$ in all)
+satisfy an exact mirror identity: the map $x\mapsto 42-x$ on the
+omitted $6$-subsets of $\{1,\dots,41\}$ (the entry $42$ belongs to
+every candidate set) sends stratum $S_1$ to stratum $259-S_1$ and
+preserves the candidacy conditions, pairing the slots as
+$(112\text{--}126,\,133\text{--}147)$ and
+$(127\text{--}129,\,130\text{--}132)$ --- the examined counts pair
+exactly, while the partitionable counts rightly do not, since no
+entrywise bijection transports the semi-bimagic structure.
+\end{remark}
+
+\section{The squares}\label{sec:squares}
+
+The minimal-$S_2$ square, $(42,129,3659)$, on the set omitting
+$\{4,11,18,25,32,39\}$ (an arithmetic progression of step $7$):
+\[
+\begin{pmatrix}
+ 1 & 12 & 20 & 27 & 33 & 36\\
+28 & 31 & 37 &  2 & 10 & 21\\
+38 & 23 & 35 & 14 & 16 &  3\\
+13 & 15 &  5 & 40 & 22 & 34\\
+19 &  6 &  8 & 29 & 41 & 26\\
+30 & 42 & 24 & 17 &  7 &  9
+\end{pmatrix}
+\]
+
+A square on the set omitting the six central consecutive integers
+$\{19,\dots,24\}$, $(42,129,3799)$:
+\[
+\begin{pmatrix}
+ 1 &  6 & 26 & 29 & 33 & 34\\
+27 & 28 & 31 & 36 &  2 &  5\\
+32 & 35 &  3 &  4 & 25 & 30\\
+40 & 39 & 17 & 14 & 12 &  7\\
+11 &  8 & 42 & 37 & 16 & 15\\
+18 & 13 & 10 &  9 & 41 & 38
+\end{pmatrix}
+\]
+
+A $26/28$ square (two magic, non-bimagic diagonals, matching
+Pfeffermann's diagonal pattern but with $\mathrm{MaxNb}=42$):
+\[
+\begin{pmatrix}
+ 1 & 26 & 29 & 34 & 33 &  6\\
+27 & 31 & 36 &  5 &  2 & 28\\
+32 &  3 &  4 & 30 & 25 & 35\\
+18 & 10 &  9 & 38 & 41 & 13\\
+11 & 42 & 37 & 15 & 16 &  8\\
+40 & 17 & 14 &  7 & 12 & 39
+\end{pmatrix}
+\]
+
+All three were re-verified by an independent checker calibrated on the
+four historical squares (see Data availability).
+
+\section{Method: two independent algorithms}\label{sec:method}
+
+\textbf{Algorithm 1 (set-sweep).} Enumerates candidate $36$-element
+sets, then partitions into six bimagic sextets (equal $S_1$ and $S_2$),
+then column extensions with pruning. It does \emph{not} assume
+$1\in$ set: no translation lemma is used.
+
+\textbf{Algorithm 2 (bucket).} Enumerates all sextets of $[1,M]$,
+buckets them by $(S_1,S_2)$, and searches for six pairwise disjoint
+sextets within a bucket; it assumes $1\in$ set and $M\in$ set via the
+translation lemma.
+
+The two implementations therefore differ in their hypotheses, not only
+in their code. Every exclusion below carries both.
+
+\begin{center}
+\small
+\begin{tabular}{@{}l>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}p{4.9cm}@{}}
+\toprule
+$\mathrm{MaxNb}$ & outcome & algorithms & logs\\
+\midrule
+36 & excluded & set-sweep + bucket + brute-force sextets & \texttt{blim3yxim}, \texttt{groups36.log}, \texttt{verify36.log}\\
+37 & excluded & set-sweep + bucket & \texttt{blim3yxim}, \texttt{bn0vyvt60}\\
+38 & excluded & set-sweep + bucket & \texttt{blim3yxim}, \texttt{bn0vyvt60}\\
+39 & excluded & set-sweep + bucket & \texttt{b62iegrr5}, \texttt{groups39.log}\\
+40 & excluded & bucket + set-sweep ($82{,}251$ sets) & \texttt{bjzvtqu5c}, \texttt{bz9px7zym}\\
+41 & excluded & bucket + set-sweep ($658{,}008$ sets) & \texttt{bjzvtqu5c}, \texttt{bz9px7zym}\\
+42 & attained + classified & two independent implementations, full window (Remark~\ref{rem:replication}) & \texttt{bjzvtqu5c}, \texttt{b5zmw01yv}, \texttt{b7x4hoknj}, \texttt{bmlofdsyf}, \texttt{replica-full-s1\_*.json}, \texttt{replica-full-verdetto.log}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The four optimal sets and the collapse}\label{sec:collapse}
+
+At $\mathrm{MaxNb}=42$, $S_1=129$ is forced. The exhaustive phase-2 run
+found $324$ partitions of candidate sets into six bimagic rows, of which
+exactly $24$ extend to a full square, distributed over the four sets:
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+omitted set & $S_2$ & partitions (extending/total) & structure\\
+\midrule
+$\{19,\dots,24\}$        & 3799 & 8 / 59  & six central consecutive\\
+$\{4,11,18,25,32,39\}$   & 3659 & 8 / 132 & arithmetic progression, step 7\\
+$\{7,8,21,22,35,36\}$    & 3671 & 4 / 50  & three adjacent pairs\\
+$\{10,11,12,31,32,33\}$  & 3691 & 4 / 83  & two blocks of three\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both totals ($324$ and $24$) were replicated by an independent
+implementation with a different framing.
+
+\medskip
+\noindent\textbf{Where candidates die.} Within the symmetric class, the
+counting chain has four declarable stages:
+\[
+546 \ \text{arithmetic candidates}
+\ \xrightarrow{\ \text{sextet cover}\ } 546
+\ \xrightarrow{\ \text{row partitions}\ } 382
+\ \xrightarrow{\ \text{orthogonality}\ } 4 .
+\]
+No candidate dies at the sextet-cover stage; $164$ die for lack of any
+row partition; and $378$ of the remaining $382$ ($99.0\%$) die at the
+column-extension (orthogonality) stage. The bottleneck is orthogonality,
+not arithmetic. A striking witness: the centred set omitting
+$\{2,3,4,39,40,41\}$ passes all arithmetic conditions with
+$S_2=3459$ --- \emph{below} the realized minimum --- and admits six row
+partitions, yet no square exists on it.
+
+\medskip
+\noindent\textbf{Symmetry as output.} All four optimal sets are closed
+under $x\mapsto 43-x$. This is not a filter of the search: $S_1=129$
+only forces the mean $21.5$, and the enumeration is symmetry-agnostic.
+The central symmetry emerges.
+
+\medskip
+\noindent\textbf{A finer instance.} The omitted set of the
+$S_2$-minimal winner is exactly the residue class $4\pmod 7$ of
+$\{1,\dots,42\}$. The mirror $x\mapsto 43-x$ sends class $r$ to class
+$1-r\pmod 7$, and $r=4$ is the \emph{unique} self-mirror class. Its
+five sister classes are admissible candidates in their own right
+($S_1(r)=133-r$, $S_2(r)=3815-35r-r^2$, always integral), yet none of
+them admits a single row partition: among the six whole-class
+omissions, the unique symmetric one is the only one to reach the
+partition stage --- and it wins.
+
+\begin{proposition}[Lifting of the mirror symmetry]\label{prop:lift}
+The involution $\sigma:x\mapsto 43-x$ sends bimagic sextets of a
+mirror-closed entry set to bimagic sextets
+($\textstyle\sum(43-x)=258-129=129$;
+$\sum(43-x)^2=11094-2\cdot 43\cdot 129+\sum x^2=\sum x^2$), hence acts
+on the row partitions of each optimal set and on orthogonal pairs of
+partitions, preserving the intersection profile. Orbits have size one
+or two, so an odd count of orthogonal pairs forces a $\sigma$-fixed
+pair, whose square satisfies $43-M=M$ up to row and column
+permutations (\emph{self-complementary}); a non-fixed pair is
+exchanged with its $\sigma$-image, the two squares being complements
+of one another up to permutations, composed with transposition when
+$\sigma$ swaps the row and column roles. With the orthogonal-pair
+counts $5,5,2,2$: the $S_2=3799$ set carries one self-complementary
+square and two plainly complement-paired orbits; $3659$ one
+self-complementary square, one plain and one transposed orbit; $3671$
+one plain orbit; $3691$ one transposed orbit (all verified
+explicitly). The mirror symmetry of the optimal sets thus lifts to the
+optimal squares themselves.
+\end{proposition}
+
+\section{A corollary on squares of squares}
+
+Squaring the $(42,129,3659)$ square cell-wise gives a $6\times6$
+\emph{semi-magic square of $36$ distinct perfect squares} with constant
+$3659$ and largest entry $42^2=1764$. (Magic squares of squares of order
+$6$ with diagonals are known: Boyer 2005~\cite{boyer2005}; the point
+here is only the size of the entries, inherited from the record.)
+
+\section{The local structure of orthogonality: twin triples}
+\label{sec:twins}
+
+The enumeration of Section~\ref{sec:collapse} shows that survival is
+decided almost entirely at the orthogonality stage ($99.0\%$ of the
+row-partitionable symmetric candidates die there), and
+Remark~\ref{rem:richness} that neither symmetry nor partition
+abundance governs that stage. This section opens the structural study
+of the mechanism itself. The natural local objects are pairs of
+columns: two columns of a semi-bimagic square are two disjoint
+six-element sets with the same sum and the same sum of squares,
+interacting through the rows. We first develop the combinatorics of
+such pairs in isolation, then return to the square.
+
+\subsection{Twins, alignment, realizations}
+
+\begin{definition}[bimagic pair, twins]\label{def:twin}
+A \emph{bimagic pair} is a pair $(A,B)$ of disjoint six-element sets
+of positive integers with $\sum A=\sum B$ and $\sum_{a\in A}a^2
+=\sum_{b\in B}b^2$. A \emph{twin} of $(A,B)$ is a pair
+$g=(T_A,T_B)$ of three-element subsets $T_A\subset A$,
+$T_B\subset B$ with
+\[
+\textstyle\sum T_A=\sum T_B \quad\text{and}\quad
+\sum_{x\in T_A}x^2=\sum_{y\in T_B}y^2,
+\]
+i.e.\ an instance of the Prouhet--Tarry--Escott problem of degree $2$
+and size $3$~\cite{pte} inside the pair. We write $G(A,B)$ for the
+set of twins of $(A,B)$, and
+$\bar g=(A\setminus T_A,\,B\setminus T_B)$ for the \emph{complement}
+of a twin.
+\end{definition}
+
+Complementation is well defined: $\sum(A\setminus T_A)=\sum A-\sum
+T_A=\sum B-\sum T_B=\sum(B\setminus T_B)$, and likewise for squares.
+Since $T_A\ne A\setminus T_A$, the map $g\mapsto\bar g$ is a
+fixed-point-free involution of $G(A,B)$; in particular $|G(A,B)|$ is
+always even.
+
+\begin{lemma}[rigidity]\label{lem:rigid}
+Two three-element subsets of the same six-element set sharing two
+elements and having the same sum coincide. Consequently, if two
+distinct twins share exactly two elements on some side, their
+invariants $(\sum T,\sum T^{(2)})$ differ.
+\end{lemma}
+
+\begin{proof}
+The third element is determined already by the linear sum.
+\end{proof}
+
+\begin{definition}[pairing, alignment]\label{def:align}
+A \emph{pairing} of a bimagic pair is a bijection $\pi\colon A\to B$;
+when $A,B$ are two columns of a square, the rows provide one. The
+\emph{alignment} of a twin $g=(T_A,T_B)$ under $\pi$ is
+\[
+k(g,\pi)\;=\;|\pi(T_A)\cap T_B|\;\in\;\{0,1,2,3\},
+\]
+and we write $N_3(\pi)$, $N_2(\pi)$ for the numbers of twins of
+$(A,B)$ with $k=3$, resp.\ $k=2$.
+\end{definition}
+
+Twins aligned at $3$ and at $2$ are precisely the two ways a twin can
+be \emph{realized} on a square. Fix two columns $c_1,c_2$ of a
+semi-bimagic square $M$; its entries being pairwise distinct, so are
+in particular the twelve paired entries $p_j=M_{j,c_1}$,
+$q_j=M_{j,c_2}$ ($j$ the row) --- the hypothesis used below to
+exclude $|J|\in\{1,2\}$ and to recover rows uniquely. Write
+$d_j=q_j-p_j$, $e_j=q_j^2-p_j^2$; the row pairing is
+$\pi(p_j)=q_j$.
+
+\begin{proposition}[realizations]\label{prop:real}
+\emph{(i) (row-aligned twins are the moves confined to two columns.)}
+For a set of rows $J$ with $0<|J|<6$, swapping the entries $p_j$ and
+$q_j$ in the rows $j\in J$ yields again a semi-bimagic square if and
+only if $\sum_{j\in J}d_j=0$ and $\sum_{j\in J}e_j=0$
+(\emph{homogeneous system}). Every such $J$ has $|J|=3$, and
+\[
+J\;\longmapsto\;\bigl(\{p_j\colon j\in J\},\,\{q_j\colon j\in J\}\bigr)
+\]
+is a bijection from the proper solutions of the homogeneous system
+onto the twins with $k(g,\pi)=3$.
+
+\emph{(ii) (skew twins.)} Call \emph{affine system} the set of
+triples $(j_1,j_2,K)$ with $j_1\ne j_2$, $K$ a two-element subset of
+the remaining four rows, and
+\[
+q_{j_1}-p_{j_2}+\textstyle\sum_{j\in K}d_j=0,\qquad
+q_{j_1}^2-p_{j_2}^2+\textstyle\sum_{j\in K}e_j=0 .
+\]
+Then
+$(j_1,j_2,K)\mapsto\bigl(\{p_{j_2}\}\cup\{p_j\colon j\in K\},\,
+\{q_{j_1}\}\cup\{q_j\colon j\in K\}\bigr)$
+is a bijection from the affine system onto the twins with
+$k(g,\pi)=2$.
+\end{proposition}
+
+\begin{proof}
+(i) Each row keeps its two entries under the swap, so all row sums
+and row square-sums are unchanged, as are the other columns; column
+$c_1$ changes by $\sum_J d_j$ in sum and $\sum_J e_j$ in square-sum
+(and $c_2$ by the negatives), whence the criterion. Sizes: the full
+set $J=\{1,\dots,6\}$ solves the system trivially (the two columns
+have equal sums and equal square-sums), so complements of solutions
+are solutions; $|J|=1$ forces
+$d_j=e_j=0$, i.e.\ $p_j=q_j$, excluded; if $J=\{i,j\}$ has size
+$2$, then $d_i=-d_j$, and $e=d\,(p+q)$ turns $\sum e=0$ into
+$p_i+q_i=p_j+q_j$; combined with $d_i=-d_j$ this gives $q_i=p_j$ and
+$p_i=q_j$, repeated entries --- excluded. So proper solutions have
+$|J|=3$. The map lands on twins: the sums of
+$\{p_j\}_J$ and $\{q_j\}_J$ agree iff $\sum_J d=0$, likewise for
+squares; and $\pi(\{p_j\}_J)=\{q_j\}_J$ gives $k=3$. It is injective
+($J$ is the set of rows of $T_A$), and surjective: if $k(g,\pi)=3$
+then $\pi(T_A)=T_B$, so with $J$ the rows of $T_A$ we get
+$\sum_J d=\sum T_B-\sum T_A=0$, and likewise for $e$.
+
+(ii) The two displayed equations say exactly that the two triples
+have equal sums and equal square-sums. Alignment: $\pi(T_A)
+=\{q_{j_2}\}\cup\{q_j\}_{j\in K}$, and since $j_1\ne j_2$ and
+$j_1,j_2\notin K$, the intersection with
+$T_B=\{q_{j_1}\}\cup\{q_j\}_{j\in K}$ is $\{q_j\}_{j\in K}$, so
+$k=2$. Conversely, from a twin with $k=2$ one recovers uniquely: $K$
+= the rows $j$ with $p_j\in T_A$ and $q_j\in T_B$ (exactly two of
+them), $j_2$ = the row of the element of $T_A$ not paired into
+$T_B$, $j_1$ = the row of the element of $T_B$ not hit by
+$\pi(T_A)$; and $j_1\ne j_2$, since $j_1=j_2$ would give $k=3$.
+\end{proof}
+
+\begin{remark}[machine check]\label{rem:bijcheck}
+Both bijections were verified computationally by complete enumeration
+of both sides on $32{,}400$ pairings ($45$ column pairs from three
+sample squares of different families $\times$ all $720$ bijections):
+$1{,}008$ homogeneous solutions against $1{,}008$ twins at $k=3$ and
+$9{,}072$ affine solutions against $9{,}072$ twins at $k=2$, with
+multiset equality and injectivity holding on every single pairing.
+\end{remark}
+
+\subsection{The exclusion phenomenon}
+
+On the actual squares the two realizations never coexist. On all
+$1{,}200$ column pairs of the seven squares in our test harness (two
+of the optimal squares, an auxiliary square with entries up to $44$
+produced during our exploratory searches, Pfeffermann's and Boyer's
+squares, Wroblewski's square with row sum $648$, and Morgenstern's
+with row sum $330$), the
+homogeneous system is solvable on $64$ pairs --- every solution with
+$|J|=3$, as Proposition~\ref{prop:real} forces --- and \emph{no pair
+solves both systems}. The real row pairing is not what protects:
+permuting the pairing exhaustively --- a pre-registered deterministic
+shuffle, $3{,}600$ pairings --- homogeneous solutions do appear where
+the real pairing has none, yet still no pairing solves both. Neither
+does any other pairing: on $45$ column pairs the full sweep of all
+$720$ bijections each ($32{,}400$ pairings) finds $N_3(\pi)\,
+N_2(\pi)=0$ throughout, and a wider screen ($388{,}800$ pairings:
+the $S_2=3799$ optimal square, Pfeffermann's, and Wroblewski's
+row-sum-$648$ square --- three different structural families --- over
+all $36$ oriented orthogonal views, all $15$ column pairs and all
+$720$ bijections) finds the same. This motivates the general conjecture:
+
+\begin{conjecture}[exclusion, general form]\label{conj:excl}
+For every bimagic pair $(A,B)$ and every pairing $\pi$,
+\[
+N_3(\pi)\cdot N_2(\pi)\;=\;0 .
+\]
+\end{conjecture}
+
+Section~\ref{sec:free} refutes Conjecture~\ref{conj:excl} in this
+generality. The theorem below identifies the hypothesis under which
+its conclusion does hold, for every pairing.
+
+\subsection{Exclusion from uniqueness: Theorem G}
+
+\begin{lemma}[complementation preserves alignment]\label{lem:compl}
+For every twin $g$ and pairing $\pi$:\ \ $k(\bar g,\pi)=k(g,\pi)$.
+\end{lemma}
+
+\begin{proof}
+$\pi(A\setminus T_A)=B\setminus\pi(T_A)$, so
+\[
+|\pi(A\setminus T_A)\cap(B\setminus T_B)|
+=6-|\pi(T_A)\cup T_B|
+=6-\bigl(3+3-k(g,\pi)\bigr)=k(g,\pi). \qedhere
+\]
+\end{proof}
+
+\begin{theorem}[exclusion from uniqueness]\label{thm:G}
+Let $(A,B)$ be a bimagic pair with $G(A,B)=\emptyset$ or
+$G(A,B)=\{g,\bar g\}$ (at most one twin up to complementation). Then
+$N_3(\pi)\,N_2(\pi)=0$ for every pairing $\pi$.
+\end{theorem}
+
+\begin{proof}
+If $G=\emptyset$ there is nothing to align. Let $G=\{g,\bar g\}$.
+Alignment under a fixed $\pi$ assigns to each twin a single value
+$k$, and by Lemma~\ref{lem:compl} the two twins carry the same value.
+If $N_3(\pi)>0$, some twin has $k=3$, hence both do; $G$ is exhausted
+by twins aligned at $3$, and $N_2(\pi)=0$.
+\end{proof}
+
+The proof is pure combinatorics of finite sets: the integer values
+enter only through the definition of $G$. Theorem~\ref{thm:G}
+concentrates all the arithmetic of Conjecture~\ref{conj:excl} into a
+statement about twelve integers:
+
+\begin{conjecture}[uniqueness of twins, general form]\label{conj:uniq}
+Every bimagic pair admits at most one twin up to complementation:
+$G(A,B)=\emptyset$ or $G(A,B)=\{g,\bar g\}$.
+\end{conjecture}
+
+\begin{corollary}
+The uniqueness condition implies the exclusion property:
+Conjecture~\ref{conj:uniq} implies Conjecture~\ref{conj:excl}.
+\end{corollary}
+
+Conjecture~\ref{conj:uniq} too is refuted in general by the free
+census (Section~\ref{sec:free}): four-twin pairs exist. What the
+fifteen-square data support exhaustively --- and what we conjecture
+--- is its environment form:
+
+\begin{conjecture}[uniqueness in the square environment]\label{conj:world}
+For every pair $(A,B)$ of column blocks of the partitions entering a
+semi-bimagic square of order $6$:\ \ $G(A,B)=\emptyset$ or
+$G(A,B)=\{g,\bar g\}$.
+\end{conjecture}
+
+By Theorem~\ref{thm:G}, Conjecture~\ref{conj:world} yields the
+exclusion on every pairing throughout the square environment.
+
+\subsection{Evidence, and the residual case}\label{sec:residual}
+
+\textbf{Direct census.} On the $45$ column pairs of the three sample
+views of Remark~\ref{rem:bijcheck}: $|G|\in\{0,2\}$ with no other
+value ($31$ empty, $14$ non-empty), and every non-empty $G$ is a
+complementary pair $\{g,\bar g\}$. On the wide base: among all
+$1{,}078$ distinct pairs of column blocks taken from the partitions
+entering orthogonal pairs across fifteen squares (the four optimal
+squares, the auxiliary square with entries up to $44$, and ten
+historical or recorded squares: Pfeffermann's, Boyer's, two of
+Morgenstern's, four of Wroblewski's and two of Rouanet's):
+\[
+|G|=0\ \text{on}\ 811\ \text{pairs},\qquad
+|G|=2\ \text{on}\ 267\ \text{pairs},
+\]
+always a complementary pair, with no violation. The status of this
+evidence is declared: exhaustive in the sample, not a proof.
+
+\begin{remark}[the sweep is universal]\label{rem:sweep}
+For a pair with $G=\{g,\bar g\}$ the distribution of alignments over
+all $720$ pairings is forced by pure combinatorics, independently of
+the values: the number of bijections of two six-element sets carrying
+a fixed $3$-subset onto a fixed $3$-subset with intersection exactly
+$k$ is $36,\,324,\,324,\,36$ for $k=3,2,1,0$. Hence every non-empty
+pair shows the same sweep --- $36$ pairings with $N_3>0$, $324$ with
+$N_2>0$, $360$ with neither --- exactly as observed on all $14$
+non-empty pairs of the census. The same four numbers reappear as the
+row marginals of the alignment tables of every four-twin pair of the
+free census (Section~\ref{sec:free}).
+\end{remark}
+
+\textbf{The residual case.} What remains between the evidence and
+Conjecture~\ref{conj:uniq} is the exclusion of two \emph{independent}
+twins --- two twins that are neither equal nor complementary. The
+route through complements, suggested to us in review, closes most of
+the possible configurations:
+
+\begin{proposition}[reduction of the residual case]\label{prop:reduction}
+Let $g=(T_A,T_B)$ and $g'=(T'_A,T'_B)$ be \emph{independent} twins of
+a bimagic pair $(A,B)$ --- twins that are neither equal nor
+complementary, $g'\notin\{g,\bar g\}$ --- and
+$(a,b)=(|T_A\cap T'_A|,\,|T_B\cap T'_B|)$.
+Up to replacing $g'$ by $\bar g'$ (which turns $(a,b)$ into
+$(3-a,3-b)$) and swapping the two sides, only two configurations are
+possible:
+\emph{(I) half-sum}, $(a,b)=(3,0)$: both triples of $g$ have halved
+invariants, $2\sum T=\sum A$ and $2\sum T^{(2)}=\sum A^{(2)}$, and
+then $|G(A,B)|\ge 4$;
+\emph{(II) transversal}, $(a,b)=(2,1)$.
+Consequently Conjecture~\ref{conj:uniq} holds if and only if no
+bimagic pair carries a twin with halved invariants or a transversal
+pair of twins.
+\end{proposition}
+
+\begin{proof}
+The cells $(3,3)$ and $(0,0)$ are $g'=g$ and $g'=\bar g$, excluded by
+independence. Let $a=3$, i.e.\ $T'_A=T_A$ (this covers $a=0$ by
+complementation and $b\in\{0,3\}$ by the side swap): then $T'_B$ and
+$T_B$ have the same invariants, both equal to those of $T_A$. Now
+$b=2$ is impossible by Lemma~\ref{lem:rigid}. For $b=1$, write
+$T_B=\{x,u,v\}$ and $T'_B=\{x,r,s\}$ with $x$ the shared element:
+equal sums give $u+v=r+s$, equal square-sums give
+$u^2+v^2=r^2+s^2$, hence $2uv=(u+v)^2-(u^2+v^2)=2rs$; so $\{u,v\}$
+and $\{r,s\}$ are the root pairs of the same quadratic
+$X^2-(u+v)X+uv$, i.e.\ $\{u,v\}=\{r,s\}$ and $T'_B=T_B$ ---
+contradicting $b=1$. Finally $b=3$ gives $g'=g$. So $b=0$:
+$T'_B=B\setminus T_B$, whose invariants equal those of $T_B$ exactly
+when both are halved --- configuration (I) --- and then $g$, $\bar g$,
+$(T_A,B\setminus T_B)$, $(A\setminus T_A,T_B)$ are four distinct
+twins. Let $a,b\in\{1,2\}$: for $(a,b)=(2,2)$, subtracting the twin
+conditions of $g'$ from those of $g$ the shared parts cancel, leaving
+$a_3-a_4=b_3-b_4$ and $a_3^2-a_4^2=b_3^2-b_4^2$ for the third
+elements, with $a_3\ne a_4$; hence $a_3+a_4=b_3+b_4$, so $a_3=b_3$
+--- impossible, as $A\cap B=\emptyset$. The cell $(1,1)$ reduces to
+$(2,2)$ by complementation, and $(2,1)\sim(1,2)$ is configuration
+(II), where the same subtraction leaves a difference of single
+elements against a difference of pairs and the collapse does not
+bite.
+\end{proof}
+
+The census backs the case analysis cell by cell. On the $267$
+non-empty pairs of the wide base: no twin with halved invariants, and
+no independent second twin --- the environment uniqueness re-verified
+through the case analysis itself. Moreover, the cells closed by the
+linear argument alone are empty already at the linear level (as the
+proof demands), while the lemma-closed cells and the two residual
+cells host $2{,}512$ \emph{linear} candidates in all ($882$ in the
+transversal cell, $194$ in the half-sum cell) --- every one killed by
+the quadratic equation. The remaining cases are exactly
+configurations (I) and (II) --- and the free census of the next
+subsection (up to $N=26$) shows that \emph{both are realized} on
+free bimagic pairs, with explicit members, and that in case (II)
+there are pairings exhibiting both $k=3$ and $k=2$ alignment: the
+two general conjectures are false. No exception occurs among the
+$1{,}078$ column-block pairs surveyed; the case analysis identifies
+the residual configurations that Conjecture~\ref{conj:world} asserts
+the square environment excludes.
+
+\begin{remark}[relation to the P.T.E. literature]
+Twins are instances of the Prouhet--Tarry--Escott problem of degree
+$2$ and size $3$, for which solutions abound in general. The point of
+the uniqueness question is not the existence theory of P.T.E.\ pairs
+but the way two \emph{bimagic sextuples} constrain the local P.T.E.\
+structure: on free pairs the census finds the constraint stopping at
+$|G|\le4$, in two rigid forms (Section~\ref{sec:free}), and
+Conjecture~\ref{conj:world} says that inside squares it is total. We
+are not aware of this question in the P.T.E.\ literature.
+\end{remark}
+
+\subsection{The free census: both residual configurations are
+realized}\label{sec:free}
+
+To test Conjectures~\ref{conj:excl} and~\ref{conj:uniq} outside the
+square environment we ran an exhaustive census of \emph{free} bimagic
+pairs: all pairs of disjoint six-element subsets of $[1,N]$ with
+equal sum and equal sum of squares, for $N\le 26$ ($286{,}705$ pairs
+at $N=26$).
+
+\emph{Twin counts.} Throughout the census range $|G|\in\{0,2,4\}$:
+four twins occur, never more. As forced by complementation, every
+pair with $|G|=2$ consists of a complementary pair (verified
+$11{,}158$ of $11{,}158$ at $N=24$). Four-twin pairs number $156$ in
+$[1,22]$, $306$ in $[1,24]$, $564$ in $[1,26]$. Up to relabelling of
+the four twins, they fall into the two incidence forms identified by
+Proposition~\ref{prop:reduction}:
+\emph{(II) transversal} ($156$, $300$, $552$ pairs), two complementary
+twin pairs meeting transversally, and \emph{(I) half-sum} ($0$, $6$,
+$12$ pairs, none below $[1,23]$), where both sextuples split into two
+halves with halved invariants and the four twins are the $2\times2$
+pairings of the halves.
+
+\emph{The exclusion property fails for the transversal form, whose
+realizations admit pairings with $N_3(\pi)>0$ and $N_2(\pi)>0$.}
+Every transversal pair in the census shows the same alignment
+statistics over its $720$ pairings: $32$ mixed ($N_3>0$ and
+$N_2>0$), $40$ purely row-aligned, $488$ purely skew, $160$ null.
+The smallest counterexample lies already in $[1,15]$:
+$A=\{1,3,9,10,11,14\}$, $B=\{2,5,6,7,13,15\}$, whose
+order-preserving pairing has $N_3=2$ and $N_2=2$. Every half-sum
+pair in the census, by contrast, has alignment vector
+$(k,3-k,3-k,k)$ over its four twins: $72$ pairings purely
+row-aligned, $648$ purely skew, none mixed and none null --- the
+exclusion holds for every pairing of a half-sum pair and fails for
+the transversal form. These statistics depend only on the incidence
+form, as shown by the abstract six-point model built from the
+incidence matrix, which reproduces both tables by finite counting
+over all realizations of each form, with the row marginals
+$36/324/324/36$ of Remark~\ref{rem:sweep}.
+
+\emph{The generator of the half-sum form.} Half-sum pairs arise from
+quadruples of pairwise disjoint triples with equal sum and equal sum
+of squares: each quadruple assembles into two sextuples in three
+ways, giving three four-twin pairs, and within the census
+\emph{every} half-sum pair arises this way. Quadruples number $0$ in
+$[1,22]$, $1$ in $[1,23]$, then one more per step up to $4$ in
+$[1,26]$ --- all four quadruples found in the census are translates
+of the single seed
+$\{1,17,18\},\{2,13,21\},\{3,11,22\},\{6,7,23\}$, four triples
+sharing the invariants $(36,614)$.
+
+\emph{The boundary.} Within the free census range both residual
+configurations are realized and both general conjectures are
+refuted; on the $1{,}078$ column-block pairs of the fifteen squares
+surveyed, $|G|\le 2$ with no exception. What separates the surveyed
+square environment from the free census is therefore not the
+existence of the two residual forms --- both occur in the census ---
+but their absence from the surveyed column blocks
+(Conjecture~\ref{conj:world}).
+
+\section{Open problems}
+
+\begin{enumerate}
+\item The global minimum of $S_1$ (and of $S_2$) over all semi-bimagic
+squares of order $6$ with distinct integers, with $\mathrm{MaxNb}$
+unconstrained. The trivial bound $S_1\ge 111$ improves for free:
+$S_1=111$ forces the entry set $\{1,\dots,36\}$, whose maximum
+$36\le 41$ is excluded by Theorem~\ref{thm:min}; hence $S_1\ge 112$.
+\item The analogous minimality question at order $7$.
+\item Prove Conjecture~\ref{conj:world} (uniqueness in the square
+environment). By Theorem~\ref{thm:G} this establishes the exclusion
+for every pairing throughout the environment. The two general
+conjectures are refuted by the free census (Section~\ref{sec:free}),
+which realizes both residual configurations of
+Proposition~\ref{prop:reduction}; the open question is what
+mechanism, if any, forces $|G|\le 2$ in the square environment.
+\end{enumerate}
+
+\begin{remark}[What the data already rule out]\label{rem:richness}
+A natural probabilistic reading of the sieve --- \emph{the four
+surviving sets are simply the richest in row partitions} --- fails.
+Mirror symmetry is empirically necessary for the optimal sets, but far
+from sufficient: $378$ of the $382$ mirror-symmetric candidates
+admitting row partitions yield no square. Exhaustive enumeration
+further shows that row-partition abundance alone cannot characterize
+survival: the global champion among all $45{,}985$ candidates omits
+$\{1,2,3,4,15,32\}$ (asymmetric, $S_1=141$) and admits $197$ row
+partitions yet no square; $326$ non-winners are richer than the
+poorest winner; and the four surviving sets admit between $50$ and
+$132$ row partitions, of which only $4$--$8$ extend to a square.
+Restricted to the mirror-symmetric candidates, the winners rank $1$,
+$8$, $18$, $24$ by partition count. The unresolved problem is to
+identify the global compatibility invariant governing the intersection
+between row and column decompositions.
+\end{remark}
+
+\section*{Data availability}
+
+All enumeration code, raw logs (with the identifiers cited in the tables
+above), and the machine-readable list of the $324$ partitions are
+available at
+\url{https://github.com/Rekigan/smallest-semibimagic-6x6}; its README
+maps every result of this paper to the script and the log that support
+it. For Section~\ref{sec:twins}: \texttt{seduta-g.log}
+(twin census, realization check, exhaustive $32{,}400$ sweep),
+\texttt{selezione-j3.log} (the $1{,}200$-pair dichotomy),
+\texttt{m5-predizioni.log} (pre-registered shuffle),
+\texttt{terza-biunivocita.log} and \texttt{terza-vaglio-unicita.log}
+(independent re-implementations of the bijection check and of the
+$1{,}078$-pair uniqueness screen), and \texttt{residuo-ab.log} (the
+case-analysis census of Proposition~\ref{prop:reduction}). For the
+free census of Section~\ref{sec:free}: \texttt{fresco-vaglio.log} and
+\texttt{fresco-excl.log} (census over $[1,22]$ and refutation sweep),
+\texttt{invariante-156.log}, \texttt{invariante-n24.log} and
+\texttt{salita-n26.log} (four-twin census to $N=26$: incidence forms
+and alignment statistics), \texttt{halfsum-generatore.log} (the
+quadruple generator), \texttt{modello-tabella-fine.log} (the
+abstract-model alignment tables), and \texttt{cintura-finale.log}
+(the complementation check at $|G|=2$).
+
+\begin{thebibliography}{9}
+\bibitem{pfeffermann} G.~Pfeffermann, Probl\`eme 1506: Carr\'e
+magique de 6 \`a deux degr\'es (imparfait), \emph{Les Tablettes du
+Chercheur}, Paris, 15 March 1894; solution, 15 April 1894.
+\bibitem{multimagie} C.~Boyer, \emph{Multimagic squares site},
+\texttt{multimagie.com} (accessed 2026-08-07): pages ``Unsolved
+multimagic problems'', ``Smallest bimagic squares''.
+\bibitem{boyer2005} C.~Boyer, Some notes on the magic squares of squares
+problem, \emph{The Mathematical Intelligencer} \textbf{27} (2005).
+\bibitem{pte} P.~Borwein and C.~Ingalls, The Prouhet--Tarry--Escott
+problem revisited, \emph{Enseign. Math.} (2) \textbf{40} (1994),
+3--27.
+\end{thebibliography}
+
+\end{document}

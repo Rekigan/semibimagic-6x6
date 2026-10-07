@@ -1,0 +1,10 @@
+﻿--- A. sigma-struttura dei quadrati ---
+3799, coppia fissa (13,32): 43-M = M a meno di permutazioni: True
+3671, orbita {(4,38),(12,31)}: 43-M1 = M2 a meno di permutazioni: True
+3691, orbita {(1,38),(12,27)}: 43-M1 = M2 a meno di permutazioni: False
+
+--- B. dicotomia dei difetti (tutte le 30 coppie a n1=32) ---
+vincitori : celle-2 a somme uguali 24, disuguali 0
+quasi     : celle-2 a somme uguali 0, disuguali 6
+
+(30 coppie = popolazione completa del campo simmetrico, non campione)

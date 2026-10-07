@@ -1,0 +1,48 @@
+SEDUTA INVARIANTE 156x32 (coda, seduta 2) — Bersaglio 3: TABELLA
+FINE DAL MODELLO ASTRATTO, per ENTRAMBE le incidenze canoniche
+(trasversale e half-sum). Chiude il test funzione-incidenza al
+livello fine. MISURA e conteggio finito, non teoria.
+
+Modello: punti astratti 0..5 per lato, nessuna aritmetica; gemella
+i = (T_i, U_i) dalle realizzazioni della matrice d'incidenza; per
+ogni biiezione psi delle 720: k_i = |psi(T_i) int U_i|; tabella
+(kg, kh) = (k della gemella 1, k della gemella 3) su 720.
+
+FACCE PRE-SCRITTE (attesi stampati qui, prima di ogni calcolo):
+ B3-a TRASVERSALE: tabella modello attesa IDENTICA alla misurata
+   della seduta 1 (invariante-156.log, unica x156):
+   riga kg=0: 0,16,16,4 | kg=1: 16,128,164,16 | kg=2: 16,164,128,16
+   | kg=3: 4,16,16,0 — celle (0,0) e (3,3) vuote, marginali
+   36/324/324/36.
+ B3-b HALF-SUM: tabella attesa ANTI-DIAGONALE kh = 3-kg (dal vettore
+   derivato (k,3-k,3-k,k) di 8.17): (3,0)=36, (2,1)=324, (1,2)=324,
+   (0,3)=36, tutte le altre celle 0.
+ B3-c: tabella IDENTICA su TUTTE le combinazioni di realizzazioni
+   enumerate di ciascuna forma (A-canonica x tutte le B e viceversa,
+   dichiarato). Tabella diversa dall'attesa o non unica =
+   CONTROESEMPIO: STOP e verbale coi membri.
+Log: logs/modello-tabella-fine.log
+
+====================================================================
+FORMA TRASVERSALE: realizzazioni lato A 180, lato B 180
+tabelle distinte su 360 combinazioni (A-canonica x tutte le B, B-canonica x tutte le A): 1
+        kh=0   kh=1   kh=2   kh=3
+  kg=0      0     16     16      4
+  kg=1     16    128    164     16
+  kg=2     16    164    128     16
+  kg=3      4     16     16      0
+classi ricontate dalla tabella: misti 32, solo-N3 40, solo-N2 488, nulli 160 (somma 720)
+FACCIA TRASVERSALE: tabella UNICA e IDENTICA all'attesa — la tabella fine e funzione della sola incidenza e si deriva per conteggio
+
+====================================================================
+FORMA HALF-SUM: realizzazioni lato A 20, lato B 20
+tabelle distinte su 40 combinazioni (A-canonica x tutte le B, B-canonica x tutte le A): 1
+        kh=0   kh=1   kh=2   kh=3
+  kg=0      0      0      0     36
+  kg=1      0      0    324      0
+  kg=2      0    324      0      0
+  kg=3     36      0      0      0
+classi ricontate dalla tabella: misti 0, solo-N3 72, solo-N2 648, nulli 0 (somma 720)
+FACCIA HALF-SUM: tabella UNICA e IDENTICA all'attesa — la tabella fine e funzione della sola incidenza e si deriva per conteggio
+
+VERDETTO B3: vedi facce sopra. [1.2s]

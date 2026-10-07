@@ -1,0 +1,3 @@
+
+Lemma J3 [base: tutte le coppie di colonne di tutte le viste dei 7 mondi, 1200 coppie]: taglie |J| dei fratelli trovati: {3: 64} (attesa: solo 3; il conteggio e' per-vista e per-coppia, ogni mossa appare in piu' viste)
+Dicotomia a livello di coppia-di-colonne: coppie miste (fratello E satellite sulla stessa coppia): 0

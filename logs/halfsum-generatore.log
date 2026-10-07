@@ -1,0 +1,61 @@
+SEDUTA INVARIANTE 156x32 (coda, seduta 2) — Bersaglio 1: IL
+GENERATORE DELL'HALF-SUM. MISURA, non teoria.
+
+Oggetti (definizioni stampate prima di ogni calcolo):
+ - half-split: sestina S di [1..N] con terna T: 2*somma(T) = s1(S) e
+   2*sommaq(T) = s2(S); equivalente: S = T1 U T2 disgiunte con
+   inv3(T1) = inv3(T2) (inv3 = (somma, somma quadrati));
+ - quaterna: 4 terne di [1..N] MUTUAMENTE disgiunte a inv3 IDENTICO
+   (il generatore: ogni quaterna da 3 coppie half-sum, 8.17).
+Griglia: N = 14..24 TUTTI (pari e dispari): i dispari servono alla
+faccia a N=23 e al primo-N esatto (scelta dichiarata qui).
+
+FACCE PRE-SCRITTE:
+ F1-a (bug-stop): quaterne in [1..22] = 0 — il censimento riscontrato
+   ha 0 coppie half-sum in [1..22] e ogni quaterna ne genera 3: una
+   quaterna a 22 e un BUG, STOP e verbale.
+ F1-b: quaterne attese: 1 a N=23 (la quaterna d'oro, chiave (36,614))
+   e 2 a N=24 (+ (39,689)); numeri diversi = dato nuovo coi membri.
+ F1-c (relazione a-b): per N, split estendibili a quaterna vs no;
+   esempi di half-split NON estendibili coi membri (descrittiva).
+ F1-d: primo N di ogni oggetto coi membri (descrittiva).
+Controllo per appartenenza: a N=24 le coppie generate dalle quaterne
+(3 per quaterna) devono essere ESATTAMENTE le 6 coppie d'oro di
+8.17, con |G|=4 e gemelle = le 2x2 meta (ricalcolo diretto qui).
+Log: logs/halfsum-generatore.log
+
+N=22: quaterne 0
+N=23: quaterne 1
+    chiave (36, 614): [1, 17, 18] [2, 13, 21] [3, 11, 22] [6, 7, 23]
+N=24: quaterne 2
+    chiave (36, 614): [1, 17, 18] [2, 13, 21] [3, 11, 22] [6, 7, 23]
+    chiave (39, 689): [2, 18, 19] [3, 14, 22] [4, 12, 23] [7, 8, 24]
+esempi di split NON estendibili a quaterna (N=24):
+    chiave (12, 62): [1, 5, 6] | [2, 3, 7]
+    chiave (15, 101): [1, 6, 8] | [2, 4, 9]
+    chiave (18, 150): [1, 7, 10] | [2, 5, 11]
+
+tabella per N: (half-split distinte, split totali, sestine con piu split, quaterne, split estendibili):
+  N=14: half-split 30, split 30, multi-split 0, quaterne 0, estendibili 0
+  N=15: half-split 41, split 41, multi-split 0, quaterne 0, estendibili 0
+  N=16: half-split 56, split 56, multi-split 0, quaterne 0, estendibili 0
+  N=17: half-split 74, split 74, multi-split 0, quaterne 0, estendibili 0
+  N=18: half-split 92, split 92, multi-split 0, quaterne 0, estendibili 0
+  N=19: half-split 116, split 116, multi-split 0, quaterne 0, estendibili 0
+  N=20: half-split 140, split 140, multi-split 0, quaterne 0, estendibili 0
+  N=21: half-split 172, split 172, multi-split 0, quaterne 0, estendibili 0
+  N=22: half-split 210, split 210, multi-split 0, quaterne 0, estendibili 0
+  N=23: half-split 253, split 253, multi-split 0, quaterne 1, estendibili 6
+  N=24: half-split 296, split 296, multi-split 0, quaterne 2, estendibili 12
+
+F1-d primo N con half-split: 14, 30 membri: [[1, 2, 3, 5, 6, 7], [1, 2, 4, 6, 8, 9], [1, 2, 5, 7, 10, 11], [1, 2, 6, 8, 12, 13], [1, 2, 7, 10, 11, 13], [1, 3, 4, 7, 12, 13], [1, 3, 4, 8, 9, 11], [1, 3, 5, 9, 11, 13], [2, 3, 4, 6, 7, 8], [2, 3, 5, 7, 9, 10]]
+F1-d primo N con quaterna: 23
+
+FACCIA F1-a: quaterne in [1..22] = 0 (0 atteso: coerente col censimento — nessun BUG)
+FACCIA F1-b: quaterne a 23 = 1 (attesa 1), a 24 = 2 (attese 2)
+
+coppie generate dalle quaterne di N=24: 6; = le 6 coppie d'oro di 8.17? True
+ricalcolo |G| diretto sulle 6 generate: |G|=4 in 6/6
+
+VERDETTO B1: quaterne (4 terne disgiunte a inv3 identico): 0 in [1..22], 1 in [1..23], 2 in [1..24]; coppie generate a 24: 6 (= oro: True); half-split ed estendibilita: tabella sopra.
+[0.0s]

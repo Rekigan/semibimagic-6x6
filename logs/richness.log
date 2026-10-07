@@ -1,0 +1,30 @@
+le sei classi mod 7 (omissione dell'intera classe):
+  r=1: S1=132  partizioni=  0  (non nel JSON)   (specchio -> classe 0)
+  r=2: S1=131  partizioni=  0  (non nel JSON)   (specchio -> classe 6)
+  r=3: S1=130  partizioni=  0  (non nel JSON)   (specchio -> classe 5)
+  r=4: S1=129  partizioni=132  quadrato=SI   (auto-speculare)
+  r=5: S1=128  partizioni=  0  (non nel JSON)   (specchio -> classe 3)
+  r=6: S1=127  partizioni=  0  (non nel JSON)   (specchio -> classe 2)
+
+top 12 per numero di partizioni (su 45985 candidati):
+  # 1  partizioni=197  s1=141  s2=4051  omette=[1, 2, 3, 4, 15, 32]  spec=no
+  # 2  partizioni=132  s1=129  s2=3659  omette=[4, 11, 18, 25, 32, 39]  spec=si  <-- VINCITORE
+  # 3  partizioni=131  s1=135  s2=3775  omette=[1, 2, 4, 12, 33, 41]  spec=no
+  # 4  partizioni=126  s1=129  s2=3571  omette=[1, 6, 20, 21, 40, 41]  spec=no
+  # 5  partizioni=126  s1=135  s2=3835  omette=[1, 3, 4, 23, 24, 38]  spec=no
+  # 6  partizioni=120  s1=135  s2=3835  omette=[1, 2, 6, 22, 23, 39]  spec=no
+  # 7  partizioni=119  s1=129  s2=3571  omette=[1, 2, 21, 32, 33, 40]  spec=no
+  # 8  partizioni=119  s1=141  s2=4111  omette=[1, 2, 5, 12, 13, 24]  spec=no
+  # 9  partizioni=118  s1=135  s2=3751  omette=[1, 2, 4, 9, 36, 41]  spec=no
+  #10  partizioni=118  s1=135  s2=3835  omette=[1, 2, 4, 23, 27, 36]  spec=no
+  #11  partizioni=118  s1=135  s2=3835  omette=[1, 2, 9, 13, 32, 36]  spec=no
+  #12  partizioni=118  s1=135  s2=3835  omette=[1, 2, 9, 18, 22, 41]  spec=no
+
+rango dei 4 vincitori nella classifica di ricchezza:
+  #   2 su 45985  (partizioni=132)  omette=[4, 11, 18, 25, 32, 39]
+  #  63 su 45985  (partizioni=83)  omette=[10, 11, 12, 31, 32, 33]
+  # 231 su 45985  (partizioni=59)  omette=[19, 20, 21, 22, 23, 24]
+  # 340 su 45985  (partizioni=50)  omette=[7, 8, 21, 22, 35, 36]
+
+non-vincitori con piu' partizioni del vincitore piu' povero (50): 326
+=> l'ipotesi 'vincono i piu' ricchi' e' FALSA: la ricchezza non basta

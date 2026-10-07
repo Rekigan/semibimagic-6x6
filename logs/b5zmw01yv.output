@@ -1,0 +1,31 @@
+M=42: 12858 feasible buckets  ->  12391 with S1 != 129, 467 with S1 = 129   [16s]
+
+PHASE 1: any solution with S1 != 129 settles Scenario B
+  ...500/12391 buckets, 16s
+  ...1000/12391 buckets, 16s
+  ...1500/12391 buckets, 16s
+  ...2000/12391 buckets, 17s
+  ...2500/12391 buckets, 17s
+  ...3000/12391 buckets, 18s
+  ...3500/12391 buckets, 21s
+  ...4000/12391 buckets, 25s
+  ...4500/12391 buckets, 30s
+  ...5000/12391 buckets, 37s
+  ...5500/12391 buckets, 47s
+  ...6000/12391 buckets, 62s
+  ...6500/12391 buckets, 94s
+  ...7000/12391 buckets, 136s
+  ...7500/12391 buckets, 194s
+  ...8000/12391 buckets, 250s
+  ...8500/12391 buckets, 319s
+  ...9000/12391 buckets, 416s
+  ...9500/12391 buckets, 525s
+  ...10000/12391 buckets, 677s
+  ...10500/12391 buckets, 869s
+  ...11000/12391 buckets, 1285s
+  ...11500/12391 buckets, 2019s
+  ...12000/12391 buckets, 5003s
+  none: every optimal solution has S1 = 129 [11073s]
+
+PHASE 2: are all S1=129 solutions symmetric?
+  solutions examined: 24, all centred: True

@@ -1,0 +1,74 @@
+FINESTRA (d,e) — seduta M5: dati, shuffle-test, predizione-prima.
+
+PREDIZIONI PRE-REGISTRATE (stampate PRIMA di ogni calcolo):
+ P1 (shuffle, punto 3 reviewer): permutando la colonna q fra le righe
+    (tutte le 120 permutazioni a riga-0 fissa — deterministico), le
+    coppie MISTE (omogeneo E affine risolubili) COMPAIONO: nulla di
+    combinatorio vieta la coesistenza; l esclusione reale e aritmetica
+    dell accoppiamento vero.
+ P2 (predizione-prima, punto 4 reviewer; condizione C = claim 21
+    promosso a legge): sui mondi MAI censiti a mosse — le due sorelle
+    di max=43 e i 7 quadrati pre-hub di max=44 (tutti senza hub:
+    matching, dai gradi della corsa hub-hunt) — l enumeratore trovera:
+    SAT congiunti = 0 e FRA congiunti = 0 SU OGNI VISTA, con lin-sat
+    abbondanti (10-50 per vista). Se un SAT o FRA compare: C e
+    falsificata e si dichiara FORTE.
+
+ Parte 0: membri (d, s) dei fratelli e satelliti noti (dati, non
+    teoria). Basi dichiarate. Log: logs/m5-predizioni.log
+
+
+Parte 0a — fratelli di pfeffermann, vista E=70 Q=2 [membri (d,s) delle terne risolventi; base per-coppia]:
+Parte 0b — satelliti di 3799, vista E=38 Q=0 [membri (delta, sigma) + K; base per-coppia]:
+  colonne (0,5) misto (0,5) K=(2, 4): delta 12 sigma 24 dK [-16, 4] sK [36, 72]
+  colonne (0,5) misto (5,0) K=(1, 3): delta 12 sigma 14 dK [8, -20] sK [74, 38]
+  colonne (1,4) misto (2,3) K=(1, 5): delta 6 sigma 78 dK [14, -20] sK [18, 36]
+  colonne (1,4) misto (3,2) K=(0, 4): delta 6 sigma 68 dK [-16, 10] sK [38, 20]
+  colonne (2,3) misto (1,4) K=(0, 3): delta -18 sigma 42 dK [8, 10] sK [72, 18]
+  colonne (2,3) misto (4,1) K=(2, 5): delta -18 sigma 32 dK [14, 4] sK [20, 74]
+
+Parte 1 — shuffle esaustivo (120 permutazioni a riga-0 fissa) [base: 15 coppie x 2 viste campione]:
+  3799 E=38 Q=0 (A): {(hom,aff): conteggio} = {(False, False): 1488, (False, True): 288, (True, False): 24}  MISTE 0  -> P1 FALSIFICATA
+  pfeffermann E=70 Q=2 (B): {(hom,aff): conteggio} = {(False, False): 1692, (False, True): 108}  MISTE 0  -> P1 FALSIFICATA
+
+Parte 2 — l enumeratore DOPO la predizione [base per-vista]:
+  sorella-3659 (max43) E=2 Q=24: SAT 0 FRA 0 lin-sat 24
+  sorella-3659 (max43) E=24 Q=2: SAT 0 FRA 0 lin-sat 56
+  sorella-3659 (max43) E=10 Q=15: SAT 0 FRA 0 lin-sat 56
+  sorella-3659 (max43) E=15 Q=10: SAT 0 FRA 0 lin-sat 24
+  sorella-3691 (max43) E=2 Q=22: SAT 0 FRA 0 lin-sat 36
+  sorella-3691 (max43) E=22 Q=2: SAT 0 FRA 0 lin-sat 50
+  sorella-3691 (max43) E=10 Q=14: SAT 0 FRA 0 lin-sat 50
+  sorella-3691 (max43) E=14 Q=10: SAT 0 FRA 0 lin-sat 36
+  m44-a E=0 Q=31: SAT 0 FRA 0 lin-sat 10
+  m44-a E=31 Q=0: SAT 0 FRA 0 lin-sat 60
+  m44-a E=6 Q=21: SAT 0 FRA 0 lin-sat 10
+  m44-a E=21 Q=6: SAT 0 FRA 0 lin-sat 60
+  m44-b E=1 Q=30: SAT 0 FRA 0 lin-sat 30
+  m44-b E=30 Q=1: SAT 0 FRA 0 lin-sat 46
+  m44-b E=11 Q=20: SAT 0 FRA 0 lin-sat 46
+  m44-b E=20 Q=11: SAT 0 FRA 0 lin-sat 30
+  m44-c E=1 Q=50: SAT 0 FRA 0 lin-sat 24
+  m44-c E=50 Q=1: SAT 0 FRA 0 lin-sat 54
+  m44-c E=2 Q=84: SAT 0 FRA 0 lin-sat 20
+  m44-c E=84 Q=2: SAT 0 FRA 0 lin-sat 74
+  m44-c E=26 Q=71: SAT 0 FRA 0 lin-sat 24
+  m44-c E=71 Q=26: SAT 0 FRA 0 lin-sat 54
+  m44-d E=11 Q=37: SAT 0 FRA 0 lin-sat 34
+  m44-d E=37 Q=11: SAT 0 FRA 0 lin-sat 52
+  m44-d E=18 Q=55: SAT 0 FRA 0 lin-sat 34
+  m44-d E=55 Q=18: SAT 0 FRA 0 lin-sat 52
+  m44-e E=2 Q=26: SAT 0 FRA 0 lin-sat 20
+  m44-e E=26 Q=2: SAT 0 FRA 0 lin-sat 51
+  m44-e E=11 Q=15: SAT 0 FRA 0 lin-sat 51
+  m44-e E=15 Q=11: SAT 0 FRA 0 lin-sat 20
+  m44-f E=3 Q=29: SAT 0 FRA 0 lin-sat 22
+  m44-f E=29 Q=3: SAT 0 FRA 0 lin-sat 56
+  m44-f E=12 Q=23: SAT 0 FRA 0 lin-sat 22
+  m44-f E=23 Q=12: SAT 0 FRA 0 lin-sat 56
+  m44-g E=1 Q=20: SAT 0 FRA 0 lin-sat 34
+  m44-g E=20 Q=1: SAT 0 FRA 0 lin-sat 48
+  m44-g E=9 Q=12: SAT 0 FRA 0 lin-sat 48
+  m44-g E=12 Q=9: SAT 0 FRA 0 lin-sat 34
+
+Verdetto C [base: 38 viste nuove]: CONFERMATA su tutte — il calcolo ha tentato di smentire una regola gia formulata.

@@ -1,0 +1,33 @@
+Bersaglio 1b — TERZA implementazione del vaglio UNICITA 1.078
+(riscritta da specifica).
+
+FACCE PRE-SCRITTE (stampate prima dei calcoli):
+  attese 1.078 coppie distinte di blocchi; |G| {0: 811, 2: 267};
+  complementarita 267/267; zero violazioni di UNICITA.
+  Per mondo (vuote+non vuote): 3799 85+29; 3659 83+31; 3671 46+14;
+  3691 44+16; hub-44 62+28; pfeffermann 128+72; boyer 126+74;
+  w648 29+1; m330 28+2; altri sei 30+0.
+  OGNI scarto FERMA e si verbalizza, non si adatta.
+
+Base: coppie NON ORDINATE distinte di blocchi delle partizioni che
+entrano in coppie ortogonali, 15 mondi di bound_mondi.
+Log: logs/terza-vaglio-unicita.log
+
+  3799: coppie 114 = vuote 85 + nonv 29
+  3659: coppie 114 = vuote 83 + nonv 31
+  3671: coppie 60 = vuote 46 + nonv 14
+  3691: coppie 60 = vuote 44 + nonv 16
+  hub-44: coppie 90 = vuote 62 + nonv 28
+  pfeffermann: coppie 200 = vuote 128 + nonv 72
+  boyer: coppie 200 = vuote 126 + nonv 74
+  morgenstern-72: coppie 30 = vuote 30 + nonv 0
+  wroblewski-408: coppie 30 = vuote 30 + nonv 0
+  wroblewski-618: coppie 30 = vuote 30 + nonv 0
+  wroblewski-648: coppie 30 = vuote 29 + nonv 1
+  wroblewski-714: coppie 30 = vuote 30 + nonv 0
+  morgenstern-330: coppie 30 = vuote 28 + nonv 2
+  rouanet-libero: coppie 30 = vuote 30 + nonv 0
+  rouanet-assoc: coppie 30 = vuote 30 + nonv 0
+
+VERDETTO 1b: coppie 1078 (attese 1078), vuote 811 (811), non vuote 267 (267), complementari 267/267, violazioni 0
+  ATTESI CENTRATI — terza implementazione concorde

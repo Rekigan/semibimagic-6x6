@@ -1,0 +1,28 @@
+Wide exclusion screen (Section 7, "The exclusion phenomenon").
+
+Claim checked (paper, Section 7): on three structurally different squares
+-- the S2 = 3799 optimal square, Pfeffermann's square (1894) and
+Wroblewski's square with row sum 648 -- over ALL oriented orthogonal
+views, ALL 15 column pairs and ALL 720 bijections between the two
+columns of a pair (388,800 pairings in total), no pairing makes the
+homogeneous and the affine system solvable at the same time
+(equivalently N3(pi) * N2(pi) = 0, by Proposition 9).
+
+Expected, written before the run: 36 oriented views in total over the
+three squares, 36 * 15 * 720 = 388,800 pairings, and 0 mixed pairings.
+
+The two systems are tested with hom_aff(), copied verbatim from
+seduta_g.py / m5_predizioni.py (the implementation used for the original
+screen, which was run ad hoc and not kept as a script; this file
+re-creates it for the public release). Squares and partition loading as
+in seduta_g.py. Standard library only.
+
+Usage:  python code/screen_388800.py  > logs/screen-388800.log
+
+optimal S2=3799 (omits 19..24): S1=129 S2=3799, 59 row partitions, 5 orthogonal pairs -> 10 oriented views; pairings 108000, homogeneous solvable 1476, affine solvable 13284, BOTH (mixed) 0
+Pfeffermann 1894: S1=150 S2=5150, 100 row partitions, 12 orthogonal pairs -> 24 oriented views; pairings 259200, homogeneous solvable 3888, affine solvable 34992, BOTH (mixed) 0
+Wroblewski, row sum 648: S1=648 S2=86684, 3 row partitions, 1 orthogonal pairs -> 2 oriented views; pairings 21600, homogeneous solvable 36, affine solvable 324, BOTH (mixed) 0
+
+TOTAL: 36 oriented views, 388800 pairings, homogeneous solvable 5400, affine solvable 48600, mixed 0
+expected: 36 views, 388800 pairings, 0 mixed -> AS EXPECTED
+time 131s

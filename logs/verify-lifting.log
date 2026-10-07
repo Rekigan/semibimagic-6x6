@@ -1,0 +1,14 @@
+== 3799: 59 partizioni, 5 coppie ortogonali [(0, 38), (0, 43), (13, 32), (14, 28), (14, 51)]
+  (0,38) orbita con (14, 51): 43-M1 ~ M2: True ; 43-M1 ~ M2^T: False  -> OK
+  (0,43) orbita con (14, 28): 43-M1 ~ M2: True ; 43-M1 ~ M2^T: False  -> OK
+  (13,32) SIGMA-FISSA: 43-M ~ M: True ; 43-M ~ M^T: False  -> OK
+== 3659: 132 partizioni, 5 coppie ortogonali [(10, 61), (10, 92), (28, 45), (43, 44), (45, 109)]
+  (10,61) orbita con (28, 45): 43-M1 ~ M2: False ; 43-M1 ~ M2^T: True  -> OK
+  (10,92) orbita con (45, 109): 43-M1 ~ M2: True ; 43-M1 ~ M2^T: False  -> OK
+  (43,44) SIGMA-FISSA: 43-M ~ M: True ; 43-M ~ M^T: False  -> OK
+== 3671: 50 partizioni, 2 coppie ortogonali [(4, 38), (12, 31)]
+  (4,38) orbita con (12, 31): 43-M1 ~ M2: True ; 43-M1 ~ M2^T: False  -> OK
+== 3691: 83 partizioni, 2 coppie ortogonali [(1, 38), (12, 27)]
+  (1,38) orbita con (12, 27): 43-M1 ~ M2: False ; 43-M1 ~ M2^T: True  -> OK
+
+TEOREMA DI SOLLEVAMENTO: VERIFICATO SU TUTTE LE COPPIE

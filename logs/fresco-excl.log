@@ -1,0 +1,19 @@
+Il test decisivo post-falsificazione: EXCL sulle coppie fresche a
+|G| = 4 (dove il Teorema G tace).
+
+FACCIA PRE-SCRITTA: se UN accoppiamento di una coppia |G|=4 da
+N3 > 0 e N2 > 0 insieme, EXCL e FALSIFICATA IN GENERALE (resta il
+teorema-per-ambiente via |G|<=2); se nessuno dei 720 x coppie lo da,
+EXCL sopravvive OLTRE il Teorema G e serve un teorema piu forte.
+
+Base: tutte le coppie disgiunte same-bucket di [1..N], N=14..22 pari,
+con |G| >= 3 (le violazioni del vaglio fresco). Sweep esaustivo 720.
+Log: logs/fresco-excl.log
+
+coppie |G|>2 uniche: 156 [dedup su N=14..22]
+  <<< MISTA: A=[1, 3, 9, 10, 11, 14] B=[2, 5, 6, 7, 13, 15] perm=(0, 1, 2, 3, 4, 5) N3=2 N2=2 — EXCL FALSIFICATA IN GENERALE
+  <<< MISTA: A=[1, 3, 9, 10, 11, 14] B=[2, 5, 6, 7, 13, 15] perm=(0, 1, 2, 4, 3, 5) N3=2 N2=2 — EXCL FALSIFICATA IN GENERALE
+  <<< MISTA: A=[1, 3, 9, 10, 11, 14] B=[2, 5, 6, 7, 13, 15] perm=(0, 1, 3, 2, 4, 5) N3=2 N2=2 — EXCL FALSIFICATA IN GENERALE
+
+VERDETTO [base: 156 coppie x 720 accoppiamenti esaustivi]: distribuzione {(True, True): 4992, (False, True): 76128, (False, False): 24960, (True, False): 6240}
+  accoppiamenti MISTI: 4992 — EXCL FALSIFICATA IN GENERALE (resta teorema-per-ambiente)

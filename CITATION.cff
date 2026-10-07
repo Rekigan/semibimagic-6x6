@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code or these data, please cite the paper below."
+title: "The smallest semi-bimagic square of order six: code and data"
+authors:
+  - family-names: Cipolletta
+    given-names: Luca
+    email: OGS@Noiellelab.com
+repository-code: "https://github.com/Rekigan/smallest-semibimagic-6x6"
+license: MIT
+version: "1.0.0"
+date-released: 2026-10-07
+keywords:
+  - semi-bimagic squares
+  - magic squares
+  - exhaustive enumeration
+  - Prouhet-Tarry-Escott problem
+preferred-citation:
+  type: generic
+  title: "The smallest semi-bimagic square of order six"
+  authors:
+    - family-names: Cipolletta
+      given-names: Luca
+  year: 2026
+  doi: "10.5281/zenodo.23024029"
+  publisher:
+    name: Zenodo
+  notes: "Preprint, version 1.0.0, 2026-09-28"
