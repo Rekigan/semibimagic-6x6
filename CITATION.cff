@@ -5,7 +5,7 @@ authors:
   - family-names: Cipolletta
     given-names: Luca
     email: OGS@Noiellelab.com
-repository-code: "https://github.com/Rekigan/smallest-semibimagic-6x6"
+repository-code: "https://github.com/Rekigan/semibimagic-6x6"
 license: MIT
 version: "1.0.0"
 date-released: 2026-10-07
