@@ -147,8 +147,14 @@ column extension).
 the file of the Zenodo record (MD5 1bdca3e517382823486b0bbc215bec77). Its
 Data availability section still shows the placeholder "[REPOSITORY]";
 `paper/main.tex` is the same source with editorial comments removed, the
-placeholder replaced by the address of this repository and one sentence
-pointing to this README, for the next version of the record.
+placeholder replaced by the address of this repository, one sentence
+pointing to this README and a statement on the use of AI tools, for the
+next version of the record.
+
+## Use of AI tools
+
+The computations and the writing of the code in this repository were
+done with AI tools, under the direction and verification of the author.
 
 ## Citation, license, contact
 
